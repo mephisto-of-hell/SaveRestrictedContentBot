@@ -42,6 +42,7 @@ async def remt(event):
   
 @Drone.on(events.NewMessage(incoming=True, pattern="/start"))
 async def start(event):
+    await start_srb(event, text, buttons=buttons, link_preview=False, buttons=[update_button])
     text = "Send me Link of any message to clone it here, For private channel message, send invite link first.\n\n**SUPPORT:** @HYBRID_Bots"
 
     # Create inline buttons with data "set" and "rem"
