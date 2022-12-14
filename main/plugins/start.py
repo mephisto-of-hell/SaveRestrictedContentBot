@@ -40,7 +40,7 @@ async def remt(event):
     except Exception:
         await event.edit("No thumbnail saved.")                        
   
-@Drone.on(events.NewMessage(incoming=True, pattern="/start"))
+@Drone.on(events.NewMessage(pattern="^/start"))
 async def start(event):
     reply = await event.reply("Send me Link of any message to clone it here, For private channel message, send invite link first.\n\n**SUPPORT:** @HYBRID_Bots",
                                 buttons=[
