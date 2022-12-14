@@ -2,7 +2,9 @@
 
 import os
 from .. import bot as Drone
-from telethon import events, Button
+from telethon import TelegramClient, events, Button
+from telethon.events import StopPropagation, NewMessage
+from telethon import TelegramClient
     
 S = '/' + 's' + 't' + 'a' + 'r' + 't'
 
