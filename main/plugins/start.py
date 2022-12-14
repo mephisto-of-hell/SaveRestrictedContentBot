@@ -3,8 +3,6 @@
 import os
 from .. import bot as Drone
 from telethon import events, Button
-
-from ethon.mystarts import start_srb
     
 S = '/' + 's' + 't' + 'a' + 'r' + 't'
 
@@ -42,8 +40,18 @@ async def remt(event):
     except Exception:
         await event.edit("No thumbnail saved.")                        
   
-@Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
+@Drone.on(events.NewMessage(incoming=True, pattern="/start"))
 async def start(event):
     text = "Send me Link of any message to clone it here, For private channel message, send invite link first.\n\n**SUPPORT:** @HYBRID_Bots"
-    await start_srb(event, text)
-    
+
+    # Create inline buttons with data "set" and "rem"
+    buttons = [
+        Button.inline("Set thumbnail", data="set"),
+        Button.inline("Remove thumbnail", data="rem"),
+    ]
+
+    update_button = KeyboardButton("Updates", url="https://t.me/hybrid_bots")
+
+    # Send the message with the inline buttons and the button below
+    await start_srb(event, text, buttons=buttons, link_preview=False, buttons=[update_button])
+
