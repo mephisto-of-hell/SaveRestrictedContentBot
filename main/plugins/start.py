@@ -42,16 +42,14 @@ async def remt(event):
   
 @Drone.on(events.NewMessage(incoming=True, pattern="/start"))
 async def start(event):
-    text = "Send me Link of any message to clone it here, For private channel message, send invite link first.\n\n**SUPPORT:** @HYBRID_Bots"
-
-    # Create inline buttons with data "set" and "rem"
-    buttons = [
-        Button.inline("Set thumbnail", data="set"),
-        Button.inline("Remove thumbnail", data="rem"),
-    ]
-
-    update_button = KeyboardButton("Updates", url="https://t.me/hybrid_bots")
-
-    # Send the message with the inline buttons and the button below
-    await start(event, text, buttons=buttons, link_preview=False, buttons=[update_button])
-
+    reply = await event.reply("Send me Link of any message to clone it here, For private channel message, send invite link first.\n\n**SUPPORT:** @HYBRID_Bots",
+                                buttons=[
+                                    [
+                                        Button.inline("Set thumb", data="set"),
+                                        Button.inline("Remove thumb", data="rem")
+                                    ],
+                                    [
+                                        Button.inline("Updates", url="https://t.me/hybrid_bots")
+                                    ]
+                                ]
+                            )
